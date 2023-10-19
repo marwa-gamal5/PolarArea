@@ -1,0 +1,15 @@
+/* .sheme {
+  height: 100% !important;
+  width: 100% !important;
+} */
+.sheme {
+  height: 80% ;
+  width: 80% ;
+}
+.resultText {
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(51, 52, 53);
+  /* margin-left: 2%; */
+  
+}

@@ -1,0 +1,112 @@
+
+ .active-overview-top-btn1{
+  display: flex;
+    height: 60px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+  
+    background:#7BBDE5;
+    border: none;
+    color: white;
+    text-align: center;
+  
+   
+    text-transform: uppercase;
+ }
+ .active-overview-top-btn2{
+  display: flex;
+    height: 60px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+   
+    background:#6BC98D;
+    border: none;
+    color: white;
+    text-align: center;
+  
+   
+    text-transform: uppercase;
+ }
+ .active-overview-top-btn3{
+  display: flex;
+  height: 60px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+   
+    background:#E78686;
+    border: none;
+    color: white;
+    text-align: center;
+  
+   
+    text-transform: uppercase;
+ }
+ .active-overview-top-btn4{
+  display: flex;
+    height: 60px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+   
+    background:#F3C74F;
+    border: none;
+    color: white;
+    text-align: center;
+  
+   
+    text-transform: uppercase;
+ }
+ 
+
+ table {
+  width: 100%;
+  text-align: center;
+  text-justify: center;
+  
+ 
+}
+th.fixed-column ,
+td.fixed-column {
+  text-align: left; 
+}
+td.fixed-column.percentage-td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+@media only screen and (max-width: 500px) {
+  th,
+  td {
+    font-size: 10px;
+  
+  }
+}
+/* @media only screen and (max-width: 1403px) and (min-width: 500px) {
+ .Knowledge {
+font-size: 12px;
+}
+} */
+@media only screen and (max-width: 1403px) {
+  .titesize,
+  .titesize2 {
+    font-size: 12px;
+  
+    }
+}
+@media only screen and (max-width: 500px) {
+  .titesize,
+  .titesize2 {
+    font-size: 10px;
+    
+    }
+}
+@media only screen and (max-width: 400px) {
+  .titesize,
+  .titesize2 {
+    font-size: 8px;
+    }
+}
