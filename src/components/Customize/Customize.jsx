@@ -4,7 +4,7 @@
 // import "./Customize.module.css";
 // import "./Customize.css";
 // import Calendar from 'react-calendar';
-// import Button from '../Button/Button';
+
 
 // const Customize = ({ clear, print, max, size, step, clearNames, setMax, setStep }) => {
 //   const [startDate, setStartDate] = useState(new Date());
@@ -22,7 +22,7 @@
 
 //   return (
 //     <div className={style.block}>
-//       <h2>Settings</h2>
+//       {/* <h2>Settings</h2> */}
 //       {/*
 //       <Calendar
 //         onChange={(time) => onChange(time)}
@@ -35,7 +35,7 @@
 //       {endDate !== null ? endDate.toDateString() : ''}
 //       <br />
 //       */}
-//       {/* <Button name='Clear values' onClick={() => clear()} /> */}
+//       <button name='Clear values' onClick={() => clear()} />
 //       {/* <Button name='Clear labels' onClick={() => clearNames()} /> */}
 //       {/* <div className={style.settings_block}> */}
 //         {/* <b>Max value</b>    <input className={style.input} type="number" value={max} onChange={(e) => { setMax(Number(e.target.value)) }} /> */}
@@ -44,7 +44,7 @@
 //         <b>Size</b>  <input className={style.input} type="number"  value={size} onChange={(e) => { setSize(Number(e.target.value)) }} />
 //         */}
 //       {/* </div> */}
-//       <Button name='Print' onClick={() => print()} />
+//       {/* <Button name='Print' onClick={() => print()} /> */}
 //     </div>
 //   );
 // };

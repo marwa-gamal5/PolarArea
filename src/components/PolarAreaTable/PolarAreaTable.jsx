@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import PolarAreaTableItem from "./PolarAreaTableItem";
 
 import './PolarAreaTable.css'
-import Table from 'react-bootstrap/Table';
 
 
-const PolarAreaTable = ({ data, tableName, deleteItem, updateItem, addItem, percentages, totalPercentage, numberArray }) => {
 
- 
+const PolarAreaTable = ({ data, tableName, deleteItem, updateItem, addItem, percentages, totalPercentage, numberArray ,resetRanging}) => {
+  // Function to handle dimension filtering and set the table header background color
+
+  const [tableHeaderBackgroundColor, setTableHeaderBackgroundColor] = useState("#0B8FDA"); // Initial background color
 
   const knowledgeButtonRef = useRef(); // Create a ref for the "Knowledge" button
 
@@ -22,9 +23,10 @@ const PolarAreaTable = ({ data, tableName, deleteItem, updateItem, addItem, perc
   const th = tableName.map((el, index) => <th key={index}>{el}</th>);
 
   // Function to handle dimension filtering
-  const handleFilterByDimension = (dimension) => {
+  const handleFilterByDimension = (dimension ,backgroundColor) => {
     setshow('table')
     setSelectedDimension(dimension);
+    setTableHeaderBackgroundColor(backgroundColor);
   };
 
   const [editItem, setEditItem] = useState(null);
@@ -45,6 +47,7 @@ const PolarAreaTable = ({ data, tableName, deleteItem, updateItem, addItem, perc
   const cancelItem = () => {
     setEditItem(null);
   };
+  
 
   const itemList = filteredData.map((item) => (
     <PolarAreaTableItem
@@ -59,86 +62,103 @@ const PolarAreaTable = ({ data, tableName, deleteItem, updateItem, addItem, perc
       percentages={percentages}
       totalPercentage={totalPercentage}
       numberArray={numberArray}
+      resetRanging={resetRanging}
     />
   ));
 
+  
   useEffect(() => {
     // Programmatically trigger a click event on the "Knowledge" button
     knowledgeButtonRef.current.click();
   }, []); // The empty dependency array ensures this effect runs only once, similar to componentDidMount
-const [buttonColor, setButtonColor] = useState("#7BBDE5"); // Initial color
+const [buttonColor, setButtonColor] = useState("#0B8FDA"); // Initial color
 
   return (
     <div>
-      <div className="">
-      <div className="d-flex align-items-center ">
+    <div>
+          <div className="SS d-flex justify-content-around align-content-around ">
+     
+       
     <button
       ref={knowledgeButtonRef}
-      // onClick={() => handleFilterByDimension("#7BBDE5")}
-      onClick={() => handleFilterByDimension("#7BBDE5")}
-      className={`active-overview-top-btn1`}
+      // onClick={() => handleFilterByDimension("#0B8FDA")}
+      onClick={() => handleFilterByDimension("#0B8FDA", "#0B8FDA")}
+      className={`active-overview-top-btn1 ms-1`}
       style={{
-        backgroundColor: selectedDimension === "#7BBDE5" ? "#498fba" : "#7BBDE5",
-         
-         borderTop: selectedDimension === "#7BBDE5" ? "5px solid #000000" : "none"
+        backgroundColor: selectedDimension === "#0B8FDA" ? "#0B8FDA" : "#EFEFF0",
+        color:selectedDimension === "#0B8FDA" ? "#fff" : "",
+        borderRadius: selectedDimension === "#0B8FDA" ? "16px" : "16",
+       
+        // borderRight: selectedDimension === "#0B8FDA" ? "1px solid #000000" : "none",
+        //  borderTop: selectedDimension === "#0B8FDA" ? "5px solid #000000" : "none"
       }}     
     > 
-      <div className="d-flex justify-content-between align-items-between">
+      <div className="d-flex justify-content-around align-items-around">
         <p className="m-0 titesize">Knowledge</p>
-        <p className="m-0 ps-lg-3 ps-xl-5 ps-md-4 ps-sm-3 ps-1 titesize2">{percentages["#7BBDE5"].toFixed(0)}%</p>
+        <p className="m-0 ps-lg-3 ps-xl-4 ps-md-4 ps-sm-3 ps-1 titesize2">{percentages["#0B8FDA"].toFixed(0)}%</p>
       </div>
     </button>
-  <button onClick={() => handleFilterByDimension("#6BC98D")}
+    <div className="line mx-2"> </div>
+    
+   
+  <button onClick={() => handleFilterByDimension("#7DBB6D", "#7DBB6D")}
             className={`active-overview-top-btn2`}
             style={{
-              backgroundColor: selectedDimension === "#6BC98D" ? "#49ab6d" : "#6BC98D",
+              backgroundColor: selectedDimension === "#7DBB6D" ? "#7DBB6D" : "#EFEFF0",
+              color:selectedDimension === "#7DBB6D" ? "#fff" : "",
              //#808080 
-              borderTop: selectedDimension === "#6BC98D" ? "5px solid #000000" : "none"
+             borderRadius: selectedDimension === "#7DBB6D" ? "16px" : "16"
+             
+              // borderTop: selectedDimension === "#7DBB6D" ? "5px solid #000000" : "none"
             }}>
-    <div className="d-flex justify-content-between align-items-center">
+    <div className="d-flex justify-content-around align-items-center">
       <p className="m-0 titesize">Leadership Performance</p>
-      <p className="m-0 lg- titesize2 " >{percentages["#6BC98D"].toFixed(0)}%</p>
+      <p className="m-0 lg- titesize2 " >{percentages["#7DBB6D"].toFixed(0)}%</p>
     </div>
   </button>
-  <button  onClick={() => handleFilterByDimension("#E78686")}
+  <div className="line mx-2"> </div>
+  <button onClick={() => handleFilterByDimension("#DE7676", "#DE7676")}
             className={`active-overview-top-btn3`}
             style={{
-              backgroundColor: selectedDimension === "#E78686" ? "#db7676" : "#E78686",
-              
-              borderTop: selectedDimension === "#E78686" ? "5px solid #000000" : "none"
+              backgroundColor: selectedDimension === "#DE7676" ? "#DE7676" : "#EFEFF0",
+              color:selectedDimension === "#DE7676" ? "#fff" : "",
+              borderRadius: selectedDimension === "#DE7676" ? "16px" : "16"
             }}>
-    <div className="d-flex justify-content-between align-items-between">
+    <div className="d-flex justify-content-around align-items-around">
       <p className="m-0 titesize2">Behaviors</p>
-      <p className="m-0 ps-lg-3 ps-xl-5 ps-md-5 ps-sm-3 ps-1 titesize2">{percentages["#E78686"].toFixed(0)}%</p>
+      <p className="m-0 ps-lg-3 ps-xl-5 ps-md-5 ps-sm-3 ps-1 titesize2">{percentages["#DE7676"].toFixed(0)}%</p>
     </div>
   </button>
-  <button onClick={() => handleFilterByDimension("#F3C74F")}
+  <div className="line mx-2"> </div>
+  <button onClick={() => handleFilterByDimension("#EACE3E", "#EACE3E")}
             className={`active-overview-top-btn4`}
             style={{
-              backgroundColor: selectedDimension === "#F3C74F" ? "#e6b739" : "#F3C74F",
-              borderTop: selectedDimension === "#F3C74F" ? "5px solid #000000" : "none" 
+              backgroundColor: selectedDimension === "#EACE3E" ? "#EACE3E" : "#EFEFF0",
+              color:selectedDimension === "#EACE3E" ? "#fff" : "",
+              borderRadius: selectedDimension === "#EACE3E" ? "16px" : "16"
+              // borderTop: selectedDimension === "#EACE3E" ? "5px solid #000000" : "none" 
             }}>
-    <div className="d-flex justify-content-between align-items-between">
+    <div className="d-flex justify-content-around align-items-around">
       <p className="m-0 titesize2">Skills</p>
-      <p className="m-0 ps-lg-3 ps-xl-5 ps-md-5 ps-sm-3 ps-1 titesize2">{percentages["#F3C74F"].toFixed(0)}%</p>
+      <p className="m-0 ps-lg-3 ps-xl-5 ps-md-5 ps-sm-3 ps-1 titesize2">{percentages["#EACE3E"].toFixed(0)}%</p>
     </div>
   </button>
 </div>
 
 
 
+<div className="border mt-3">
 
-
-        <table className={`table table-bordered `} style={{ display: `${show}` }}>
-        <thead class="thead-dark">
+        <table className={`table table-bordered  `} style={{ display: `${show}` }}>
+        <thead>
             <tr>
             {/* <th scope="col">{th}</th> */}
-            <th scope="col">#</th>
+            <th style={{ backgroundColor: tableHeaderBackgroundColor,color: "#FFF" }} scope="col">Sl No.</th>
             {/* <th scope="col">Dimension</th> */}
-            <th className="fixed-column" scope="col">Element</th>
-            <th  scope="col ">Rateing</th>
-            <th scope="col">Element Percentage</th>
-            <th scope="col" className="ee"> Total Percentage</th>
+            <th  style={{ backgroundColor: tableHeaderBackgroundColor,color: "#FFF" }} className="fixed-column " scope="col">Element</th>
+            <th style={{ backgroundColor: tableHeaderBackgroundColor,color: "#FFF" }}  scope="col ">Ranging</th>
+            <th style={{ backgroundColor: tableHeaderBackgroundColor ,color: "#FFF"}} scope="col">Element Percentage</th>
+            <th style={{ backgroundColor: tableHeaderBackgroundColor ,color: "#FFF"}} scope="col" className="ee"> Total Percentage</th>
               
             </tr>
           </thead>
@@ -149,6 +169,17 @@ const [buttonColor, setButtonColor] = useState("#7BBDE5"); // Initial color
           
           </tbody>
         </table>
+        </div>
+        <div className="mt-5"> 
+        <button
+  type="button"
+  className="btn btn-secondary"
+  onClick={resetRanging} // Call the resetRanging function when the button is clicked
+>
+  Reset Ranging
+</button>
+        
+        </div>
       </div>
     </div>
   );

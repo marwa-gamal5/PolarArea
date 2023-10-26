@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './App.css';
 import PolarAreaCustom from './components/PolarArea/PolarArea';
 import PolarAreaTable from './components/PolarAreaTable/PolarAreaTable';
@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css'; // Import Font Awesome CSS her
 
+
 import { PolarAreaDataModel } from './Model/PolarAreaDataModel'; 
 
 function App() {
@@ -14,122 +15,122 @@ function App() {
     {
       id: 0,
       label: 'Sectoral',
-      backgroundColor: '#7BBDE5',
-      value: 3
+      backgroundColor: '#0B8FDA',
+      value: 0
     },
     {
       id: 1,
       label: 'Market',
-      backgroundColor: '#7BBDE5',
-      value: 2
+      backgroundColor: '#0B8FDA',
+      value: 0
     },
     {
       id: 2,
       label: 'Organizational',
-      backgroundColor: '#7BBDE5',
-      value: 5
+      backgroundColor: '#0B8FDA',
+      value: 0
     },
     {
       id: 3,
       label: 'Operational',
-      backgroundColor: '#7BBDE5',
-      value:4
+      backgroundColor: '#0B8FDA',
+      value:0
     },
     {
       id: 4,
       label: 'Microlevel',
-      backgroundColor: '#7BBDE5',
-      value: 1
+      backgroundColor: '#0B8FDA',
+      value: 0
     },
     {
       id: 5,
       label: 'Values-based leadership',
-      backgroundColor: '#6BC98D',
-      value: 3
+      backgroundColor: '#7DBB6D',
+      value: 0
     },
     {
       id: 6,
       label: 'Inspiring leadership',
-      backgroundColor: '#6BC98D',
-      value: 2
+      backgroundColor: '#7DBB6D',
+      value: 0
     },
     {
       id: 7,
       label: 'Visionary leadership',
-      backgroundColor: '#6BC98D',
-      value: 5
+      backgroundColor: '#7DBB6D',
+      value: 0
     },
     {
       id: 8,
       label: 'Progressive leadership',
-      backgroundColor: '#6BC98D',
-      value: 4
+      backgroundColor: '#7DBB6D',
+      value: 0
     },
     {
       id: 9,
       label: 'Emerging leadership',
-      backgroundColor: '#6BC98D',
-      value: 3
+      backgroundColor: '#7DBB6D',
+      value: 0
     },
     {
       id: 10,
       label: 'Directive',
-      backgroundColor: '#E78686',
-      value: 5
+      backgroundColor: '#DE7676',
+      value: 0
     },
     {
       id: 11,
       label: 'Supportive',
-      backgroundColor: '#E78686',
-      value: 4
+      backgroundColor: '#DE7676',
+      value: 0
     },
     {
       id: 12,
       label: 'Participative',
-      backgroundColor: '#E78686',
-      value: 2
+      backgroundColor: '#DE7676',
+      value: 0
     },
     {
       id: 13,
       label: 'Empowering',
-      backgroundColor: '#E78686',
-      value: 5
+      backgroundColor: '#DE7676',
+      value: 0
     },
     {
       id: 14,
       label: 'Adaptability',
-      backgroundColor: '#E78686',
-      value: 5
+      backgroundColor: '#DE7676',
+      value: 0
     },
     {
       id: 15,
       label: 'Master',
-      backgroundColor: '#F3C74F',
-      value: 4
+      backgroundColor: '#EACE3E',
+      value: 0
     },
     {
       id: 16,
       label: 'Expert',
-      backgroundColor: '#F3C74F',
-      value: 3
+      backgroundColor: '#EACE3E',
+      value: 0
     },
     {
       id: 17,
       label: 'Advance',
-      backgroundColor: '#F3C74F',
-      value: 3
+      backgroundColor: '#EACE3E',
+      value: 0
     },
     {
       id: 18,
       label: 'intermediate',
-      backgroundColor: '#F3C74F',
-      value: 4
+      backgroundColor: '#EACE3E',
+      value: 0
     },
     {
       id: 19,
       label: 'Basic',
-      backgroundColor: '#F3C74F',
-      value: 5
+      backgroundColor: '#EACE3E',
+      value: 0
     }
   ];
   let [max, setMax] = useState(5);
@@ -157,7 +158,21 @@ function App() {
       })
     );
   };
-
+  const resetRanging = () => {
+    const updatedData = data.map((item) => ({
+      ...item,
+      value: 0,
+    }));
+  
+    // Reset rating to 0 for all items
+    updatedData.forEach((item) => {
+      if (item.hasOwnProperty('rating')) {
+        item.rating = 0;
+      }
+    });
+  
+    setData(updatedData);
+  };
   // let clearNames = () => {
   //   setData(
   //     data.map((item) => {
@@ -166,6 +181,7 @@ function App() {
   //     })
   //   );
   // };
+ 
 
   let print = () => {
     var container = document.getElementById('htmltoimage'); /* full page */
@@ -192,7 +208,7 @@ function App() {
     return dimensionValues[dimensionIndex];
   };
 // Initialize variables for each color
-const colors = ["#7BBDE5", "#6BC98D", "#E78686", "#F3C74F"];
+const colors = ["#0B8FDA", "#7DBB6D", "#DE7676", "#EACE3E"];
 const percentages = {};
 let number ;
   let counter ;
@@ -221,7 +237,7 @@ colors.forEach((color) => {
 });
 // Calculate the total percentage
 
-const totalPercentage = ((percentages["#7BBDE5"] + percentages["#6BC98D"] + percentages["#E78686"] + percentages["#F3C74F"]) / 400) * 100;
+const totalPercentage = ((percentages["#0B8FDA"] + percentages["#7DBB6D"] + percentages["#DE7676"] + percentages["#EACE3E"]) / 400) * 100;
 
 console.log("totalPercentage" ,totalPercentage)
 
@@ -256,7 +272,7 @@ data.forEach((item) => {
 <br>
 </br>
 
-      <div className="col-xl-6 col-lg-6 col-md-9 col-sm-11 col-11 ">
+      <div className="col-xl-6 col-lg-6 col-md-10 col-sm-11 col-12 ">
         <PolarAreaTable
           data={data}
           // tableName={["Dimension","Element","Base", "Dgree", "Color", "Edit", "Delete"]}
@@ -267,6 +283,7 @@ data.forEach((item) => {
           percentages={percentages} // Pass the percentages object as a prop
           totalPercentage={totalPercentage}
           numberArray ={numberArray}
+          resetRanging={resetRanging}
         />
         </div>
        

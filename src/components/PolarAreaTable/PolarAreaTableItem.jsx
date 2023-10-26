@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import './PolarAreaTable.css'
+import { useEffect } from "react";
 const PolarAreaTableItem = ({
   editItem,
   item,
@@ -11,6 +12,7 @@ const PolarAreaTableItem = ({
   percentages,
   totalPercentage,
   numberArray,
+  PolarAreaTable
 }) => {
   // Define the mapDimensionToItem function here
   const mapDimensionToItem = (index) => {
@@ -24,16 +26,17 @@ const PolarAreaTableItem = ({
     return dimensionValues[dimensionIndex];
   };
 
+  
   const mapDimensionToColor = (dimension) => {
     switch (dimension) {
       case "Knowledge":
-        return "#7BBDE5";
+        return "#0B8FDA";
       case "Leadership Performance":
-        return "#6BC98D";
+        return "#7DBB6D";
       case "Behaviors":
-        return "#E78686";
+        return "#DE7676";
       case "Skills":
-        return "#F3C74F";
+        return "#EACE3E";
       default:
         return "#FFFFFF"; // Default background color
     }
@@ -56,6 +59,7 @@ const PolarAreaTableItem = ({
     saveItem(updatedItem);
   };
 
+  
   // Create an array of star icons with independent state
   const starIcons = [1, 2, 3, 4, 5].map((value) => (
     <i
@@ -63,8 +67,8 @@ const PolarAreaTableItem = ({
       className={`fa-star ${rating >= value ? 'fas' : 'far'}`}
       data-rating={value}
       onClick={() => handleStarClick(value)}
-      style={{ color: dimensionColor }}
-      // style={{ color: "#FFD700" }}
+      // style={{ color: dimensionColor }}
+      style={{ color: "#F8B03A" }}
     ></i>
   ));
   function getTooltipText(label) {
@@ -210,6 +214,8 @@ const PolarAreaTableItem = ({
 
       )}
     </tr>
+   
+    
     
     </>
     
